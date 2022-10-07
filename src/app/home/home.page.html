@@ -1,0 +1,68 @@
+
+
+<ion-content>
+  <div class="container-fluid" style="margin-bottom: 10%;background-color: rgb(0, 0, 0);">   
+  <div class="row" style="background-color: rgb(255, 255, 255); border-radius:20px; ">
+    <div class="col-2">
+      <ion-img src="../assets/icon/logo_kkh.jpg" style="width:80px;height: 80px; margin-top: 10px;"></ion-img>
+    </div>
+    <div class="col-8">
+      <!-- <h1 style="color:#273c75; font-size: 35px; text-align: center;">สถานะการจัดยา</h1> -->
+      <h1 style="color:#273c75; font-size: 35px; text-align: center;">หมายเลขที่เรียกผ่านไปแล้ว</h1>
+
+      <h3 style="color:#000000; font-size: 20px; text-align: center;">{{day}}&nbsp;{{days}}&nbsp;{{month}}&nbsp;{{year}}&nbsp;เวลา&nbsp;{{ today }}</h3>
+    </div>
+    <div class="col-2">
+      <ion-img src="../assets/icon/logo_p_kkh.jpg" style="width:80px; height: 80px;margin-top: 10px;"></ion-img>
+    </div>
+  </div>
+  <div class="marquee" style="margin-top:1%;">
+  <h3>{{msg_news_string}}</h3>
+</div>
+  <div class="row" style="margin-top:2%;">
+    <div class="col-12" style="padding-right: 1%;padding-left: 0%;">
+      <table> 
+        <tr>
+          <th class="text-size-head-color"style="font-size: {{head_size}}px;">เลขรับยา</th>
+          <th class="text-size-head-color"style="font-size: {{head_size}}px;">HN</th>
+          <th class="text-size-head-color"style="font-size: {{head_size}}px;">สถานะการจัดยา</th>
+          <th class="text-size-head-color"style="font-size: {{head_size}}px;">ช่องที่จัดเก็บ</th>
+
+        </tr>
+        <tr *ngFor="let item of order_transaction | slice:min1:max1; let i=index">
+          <td class="text-size-color"style="font-size: {{text_size}}px;">{{item.internal_que}}</td>
+          <td class="text-size-color"style="font-size: {{text_size}}px;">{{item.hn}}</td>
+          <td style=" color:{{item.state_color}} ;font-size: {{text_size}}px;" class="text-size-color-status">
+           {{item.state_description}}
+          </td>
+
+          <td class="text-size-color"style="font-size: {{text_size}}px;">{{item.stack_name}}-{{item.stackrow}}-{{item.stackcol}}</td>
+        </tr>
+    </table>
+    </div>
+
+  </div> 
+
+</div>
+<br><br><br>
+<p style="color: aliceblue;">table-min1</p>
+<input type="text" [(ngModel)]="min_in1" name="min_in1"><br>
+<p style="color: aliceblue;">table-max1</p> 
+<input type="text" [(ngModel)]="max_in1" name="max_in1"><br>
+<p style="color: aliceblue;">table-color1</p>
+<input type="color" [(ngModel)]="color1" name="color1"><br>
+<p style="color: aliceblue;">table-color2</p>
+<input type="color" [(ngModel)]="color2" name="color2"><br>
+<p style="color: aliceblue;">text-size-head</p>
+<input type="text" [(ngModel)]="head_size" name="head"><br>
+<p style="color: aliceblue;">text-head-color</p>
+<input type="color" [(ngModel)]="head_color" name="head_color"><br>
+<p style="color: aliceblue;">text-size</p>
+<input type="text" [(ngModel)]="text_size" name="text_size"><br>
+<p style="color: aliceblue;">text-color</p>
+<input type="color" [(ngModel)]="text_color" name="text_color"><br>
+
+  <ion-button (click)="setting();" style="color: aliceblue;" >Setting</ion-button>
+</ion-content>
+
+ 
